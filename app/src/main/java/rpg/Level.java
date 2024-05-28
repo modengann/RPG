@@ -124,16 +124,7 @@ public class Level extends Object {
     public void removeScript(Script script) {
     }
     
-    /**
-     * Return an <code>ArrayList</code> containing all scripts in this
-     * <code>Level</code> that match the given script.
-     * 
-     * @param template template to match to
-     * @return An <code>ArrayList</code> of all matching scripts.
-     */
-    public ArrayList getScripts(Script template) {
-        return null;
-    }
+    
     
     /**
      * Return the first script in this <code>Level</code> that matches the
@@ -144,6 +135,17 @@ public class Level extends Object {
      *          no matching scripts in this <code>Level</code>.
      */
     public Script getScript(Script template) {
+        return null;
+    }
+
+    /**
+     * Return an <code>ArrayList</code> containing all scripts in this
+     * <code>Level</code> that match the given script.
+     * 
+     * @param template template to match to
+     * @return An <code>ArrayList</code> of all matching scripts.
+     */
+    public ArrayList getScripts(Script template) {
         return null;
     }
     
