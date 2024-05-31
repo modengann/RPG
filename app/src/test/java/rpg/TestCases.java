@@ -149,9 +149,17 @@ public class TestCases extends junit.framework.TestCase {
         assertTrue("If I add a script to another level, it should be removed from the level it is in.", level2.getScript(a) == null);
         assertTrue("If I add a script to another level, it should appear inthe new level.", level1.getScript(a) == a);
         
+
+
         a.move(2, 3, level2);
         assertTrue("The move(x, y, level) method should change the x, y, and level of the script.", a.getLevel() == level2 && a.getX() == 2 && a.getY() == 3);
         assertTrue("Moving a script into a level should make it visible to getScript() in that level.", level2.getScript(a) == a);
+        assertTrue("Moving a script to a new level should remove it from its previous level", level1.getScript(a) == null);
+
+        level2.removeScript(a);
+        a.move(2, 3, level2);
+        assertTrue("Moving from a null level to a level should change the Script's level to the new level", level2.getScript(a) == a);
+        
         level2.addScript(new Script(6, 7, null, null));
         assertTrue("Calling getScript(script) should return the script that was added first.", level2.getScript(a) == a);
         a.move(6, 7, level2);
