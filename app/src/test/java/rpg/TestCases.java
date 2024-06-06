@@ -340,8 +340,18 @@ public class TestCases extends junit.framework.TestCase {
      * of one of those classes, and return that object instead.
      */
     public void testCreateScript() {
-        Script script = Script.createScript("1 1 Creature Player:s3d4c5");
-        String explanation = "I created a script \"1 1 Creature Player:s3d4c5\", but ";
+        Script script = Script.createScript("1 3 Lever 2 2 Test Town");
+        String explanation = "I created a script \"1 3 Lever 2 2 Test Town\", but ";
+        assertTrue(explanation + "createScript() returned null.", script != null);
+        assertTrue(explanation + "the script is at (" + script.getX() + ", " + script.getY() + 
+            ") instead of (1, 3).", script.getX() == 1 && script.getY() == 3);
+        assertTrue(explanation + "the script has the wrong action: " + script.getAction(),
+            script.getAction().equals("Lever"));
+        assertTrue(explanation + "the script has the wrong argument: " + script.getArgument(),
+            script.getArgument().equals("2 2 Test Town"));
+        
+        script = Script.createScript("1 1 Creature Player:s3d4c5");
+        explanation = "I created a script \"1 1 Creature Player:s3d4c5\", but ";
         assertTrue(explanation + "createScript() returned null.", script != null);
         assertTrue(explanation + "the script is at (" + script.getX() + ", " + script.getY() + 
             ") instead of (1, 1).", script.getX() == 1 && script.getY() == 1);
@@ -352,20 +362,6 @@ public class TestCases extends junit.framework.TestCase {
             script instanceof Creature);
         assertTrue(explanation + "the Creature is not named \"Player\"",
             ((Creature)script).getName().equals("Player"));
-        
-        
-        
-        script = Script.createScript("1 3 Lever 2 2 Test Town");
-        explanation = "I created a script \"1 3 Lever 2 2 Test Town\", but ";
-        assertTrue(explanation + "createScript() returned null.", script != null);
-        assertTrue(explanation + "the script is at (" + script.getX() + ", " + script.getY() + 
-            ") instead of (1, 3).", script.getX() == 1 && script.getY() == 3);
-        assertTrue(explanation + "the script has the wrong action: " + script.getAction(),
-            script.getAction().equals("Lever"));
-        assertTrue(explanation + "the script has the wrong argument: " + script.getArgument(),
-            script.getArgument().equals("2 2 Test Town"));
-        
-        
         
         script = Script.createScript("4 2 Item Helmet:c2");
         explanation = "I created a script \"4 2 Item Helmet:c2\", but ";
